@@ -1,4 +1,4 @@
-import {range} from "../../src/utils";
+import {range} from "../../src/utils.js";
 // Mock data for demonstration
 const experiments = [
     { id: 1, proposal_number: 'EXP-001', abstract: 'Study on XYZ', begin_date: '2024-01-01', end_date: '2024-06-30' },
@@ -45,7 +45,7 @@ function randomExperiments(){
     }))
 }
 
-export default {
+export {
     users,
     experiments,
     joint,

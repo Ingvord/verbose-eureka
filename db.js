@@ -1,8 +1,6 @@
-import {verbose} from "sqlite3";
-import {randomExperiments, randomUsers} from "./test/mock/data";
-import {range} from "./src/utils";
-
-const sqlite3 = verbose();
+import sqlite3 from "sqlite3";
+import {randomExperiments, randomUsers} from "./test/mock/data.js";
+import {range} from "./src/utils.js";
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
