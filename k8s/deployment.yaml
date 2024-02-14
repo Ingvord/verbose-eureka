@@ -17,5 +17,6 @@ spec:
       containers:
         - name: verbose-eureka
           image: ingvord/verbose-eureka:latest
+          imagePullPolicy: Always
           ports:
             - containerPort: 3000
