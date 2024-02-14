@@ -1,0 +1,21 @@
+{
+  "name": "verbose-eureka",
+  "version": "1.0.0",
+  "description": "Tiny MVP for user/proposal viewer",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ingvord/verbose-eureka.git"
+  },
+  "keywords": [],
+  "author": "Ingvord",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Ingvord/verbose-eureka/issues"
+  },
+  "homepage": "https://github.com/Ingvord/verbose-eureka#readme"
+}
