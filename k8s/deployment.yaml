@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: verbose-eureka-deployment
+  labels:
+    app: verbose-eureka
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: verbose-eureka
+  template:
+    metadata:
+      labels:
+        app: verbose-eureka
+    spec:
+      containers:
+        - name: verbose-eureka
+          image: ingvord/verbose-eureka:latest
+          ports:
+            - containerPort: 3000
