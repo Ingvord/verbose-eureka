@@ -34,7 +34,7 @@ function initialize(users, experiments) {
         db.run(`CREATE TABLE IF NOT EXISTS Experiments (
                                                            id INTEGER PRIMARY KEY AUTOINCREMENT,
                                                            proposal_number TEXT UNIQUE NOT NULL,
-                                                           abstract TEXT NOT NULL,
+                                                           abstract TEXT NOT NULL CHECK(length(abstract) <= 1023),
                                                            begin_date TEXT NOT NULL,
                                                            end_date TEXT NOT NULL
                 )`);
