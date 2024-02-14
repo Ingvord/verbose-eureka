@@ -1,10 +1,10 @@
-const express = require('express');
+import express from "express";
+import {experiments, joint, users} from "../src/data.js";
+
 const router = express.Router();
-const users = require("../test/mock/data").users;
-const experiments = require("../test/mock/data").experiments;
-const joint = require("../test/mock/data").joint;
-
-
+/**
+ * TODO
+ */
 router.get('/users', (req, res) => {
     res.json(users);
 });
@@ -50,8 +50,11 @@ router.get(`/users/:proposal_number`, (req, res) => {
     res.json(proposal.users);
 });
 
+/**
+ * TODO
+ */
 router.get('/proposals', (req, res) => {
     res.json(experiments);
 });
 
-module.exports = router;
+export default router;

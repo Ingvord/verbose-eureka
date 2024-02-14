@@ -1,7 +1,17 @@
-const express = require('express');
-const path = require('path');
-const swaggerJsDoc = require('swagger-jsdoc');
-const swaggerUi = require('swagger-ui-express');
+import express from "express";
+import { fileURLToPath } from 'url';
+
+import path from "path";
+
+
+// custom logic
+import api from "./routes/api.js";
+import swaggerUi from "swagger-ui-express";
+import swaggerJsDoc from "swagger-jsdoc";
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
@@ -27,9 +37,6 @@ const swaggerOptions = {
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);
 app.use('/explore', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
-// custom logic
-const api = require('./routes/api');
 // Port number
 const PORT = process.env.PORT || 3000;
 
