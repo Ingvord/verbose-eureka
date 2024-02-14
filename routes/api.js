@@ -9,6 +9,38 @@ router.get('/users', (req, res) => {
     res.json(users);
 });
 
+/**
+ * @swagger
+ * /api/users/{proposal_number}:
+ *   get:
+ *     summary: Returns users for a given proposal
+ *     parameters:
+ *       - in: path
+ *         name: proposal_number
+ *         required: true
+ *         description: Number of the proposal to get users for
+ *         schema:
+ *           type: string
+ *     responses:
+ *       200:
+ *         description: A list of users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   id:
+ *                     type: integer
+ *                     description: The user ID
+ *                   name:
+ *                     type: string
+ *                     description: The user's name
+ *                   orcid:
+ *                     type: string
+ *                     description: The user's ORCID
+ */
 router.get(`/users/:proposal_number`, (req, res) => {
     const proposal_number = req.params.proposal_number;
     const proposal = joint.find(proposal => proposal.proposal_number === proposal_number);
