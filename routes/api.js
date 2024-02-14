@@ -3,7 +3,7 @@ import {experiments, joint, users} from "../src/data.js";
 
 const router = express.Router();
 /**
- * TODO
+ * TODO add documentation
  */
 router.get('/users', (req, res) => {
     res.json(users);
@@ -52,7 +52,7 @@ router.get(`/users/:proposal_number`, (req, res) => {
 });
 
 /**
- * TODO
+ * TODO add documentation
  */
 router.get('/proposals', (req, res) => {
     res.json(experiments);

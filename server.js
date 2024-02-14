@@ -9,9 +9,10 @@ import api from "./routes/api.js";
 import swaggerUi from "swagger-ui-express";
 import swaggerJsDoc from "swagger-jsdoc";
 
+//workaround __dirname is undefined when loading as ES6 module
 const __filename = fileURLToPath(import.meta.url);
-
 const __dirname = path.dirname(__filename);
+
 const app = express();
 
 if (process.env.NODE_ENV === 'development') {
