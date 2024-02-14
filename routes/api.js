@@ -9,6 +9,7 @@ router.get('/users', (req, res) => {
     res.json(users);
 });
 
+//TODO extract into dedicated yaml file
 /**
  * @swagger
  * /api/users/{proposal_number}:

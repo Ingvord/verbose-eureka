@@ -32,7 +32,7 @@ const swaggerOptions = {
             version: '1.0.0',
         },
     },
-    apis: ['./routes/api.js'], // files containing annotations as above
+    apis: ['./routes/api.js'], // files containing annotations
 };
 
 const swaggerDocs = swaggerJsDoc(swaggerOptions);

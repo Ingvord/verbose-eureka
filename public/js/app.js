@@ -11,6 +11,7 @@ webix.ui({
                 // Define other proposal columns as needed
             ],
             url: "/api/proposals", // Endpoint to fetch proposals
+            //TODO extract into logic.js -> MVC
             on: {
                 onAfterSelect: function (selectedId) {
                     // Upon selecting a proposal, load corresponding users
