@@ -29,15 +29,15 @@ const joint = [
 
 
 
-function randomUsers(){
-    return range(1,20).map(i => ({
+function randomUsers(howMany = 200){
+    return range(1,howMany).map(i => ({
         name: `User ${i}`,
         orcid: `0000-0002-${String(i).padStart(4, '0')}-7890`
     }))
 }
 
-function randomExperiments(){
-    return range(1,100).map(i => ({
+function randomExperiments(howMany = 1000){
+    return range(1,howMany).map(i => ({
         proposal_number: `EXP-${String(i).padStart(3, '0')}`,
         abstract: `Abstract for experiment ${i}`,
         begin_date:'2024-01-01',

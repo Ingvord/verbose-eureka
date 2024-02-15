@@ -7,14 +7,16 @@ function getRandomInt(min, max) {
 }
 
 const DB_PATH = './db.db'; // Path to DB file
+const numberOfUsers = 2000;
+const numberOfExperiments = 10000;
 
 const db = new sqlite3.Database(DB_PATH, (err) => {
     if (err) {
         console.error('Error opening database', err.message);
     } else {
         console.log('Connected to the SQLite database.');
-        const users = randomUsers();
-        const experiments = randomExperiments();
+        const users = randomUsers(numberOfUsers);
+        const experiments = randomExperiments(numberOfExperiments);
         initialize(users, experiments);
     }
 });
@@ -55,6 +57,7 @@ function initialize(users, experiments) {
             insertUser.run(user.name, user.orcid);
         });
         insertUser.finalize();
+        console.log("Done with users;")
 
         // Insert sample data into Experiments
         const insertExperiment = db.prepare('INSERT INTO Experiments (proposal_number, abstract, begin_date, end_date) VALUES (?, ?, ?, ?)');
@@ -62,16 +65,17 @@ function initialize(users, experiments) {
             insertExperiment.run(exp.proposal_number, exp.abstract, exp.begin_date, exp.end_date);
         });
         insertExperiment.finalize();
+        console.log("Done with experiments;")
 
         // Insert sample associations into ExperimentUser
         db.serialize(() => {
             const insertAssociation = db.prepare('INSERT INTO ExperimentUser (proposal_number, user_id) VALUES (?, ?)');
 
-            range(1,100)
+            range(1,numberOfExperiments)
                 .flatMap(expNumber => Array.from(
                     new Set(
-                        range(1, getRandomInt(1,5))
-                            .map(() => getRandomInt(1, 20))))
+                        range(1, getRandomInt(1,10))
+                            .map(() => getRandomInt(1, numberOfUsers))))
                     .map(userId => ({
                         expNumber,
                         userId
@@ -81,6 +85,13 @@ function initialize(users, experiments) {
 
             insertAssociation.finalize();
         });
+        console.log("Done with joint;")
+
+    });
+
+    db.close(() => {
+        console.log('Closed the database connection.');
+        process.exit(0);
     });
 }
 
